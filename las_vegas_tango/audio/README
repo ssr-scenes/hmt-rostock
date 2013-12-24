@@ -1,7 +1,6 @@
-Generation of mono files from original stereo files:
+# Generation of mono files from original stereo files:
 
 sox orig/Bass_24.wav -c1 bass.wav
-sox orig/Gitarre_24.wav -c1 gitarre.wav
 sox orig/Piano_24.wav -c1 piano.wav
 sox orig/Sax_24.wav -c1 sax.wav
 sox orig/Voc_24.wav -c1 voc.wav
@@ -10,6 +9,10 @@ sox orig/Klicker-snare_24.wav klicker-snare.wav remix 2
 
 sox -m orig/BD_24.wav orig/Hihat_24.wav orig/OVH_24.wav orig/SN_24.wav -c1 drums.wav
 
-Convert to OGG:
+# The original guitar track was a little too early, so it was delayed a bit:
+
+sox orig/Gitarre_24.wav -c1 gitarre.wav pad 5406s
+
+# Convert to OGG:
 
 for f in *.wav ; do oggenc -q6 $f ; done
